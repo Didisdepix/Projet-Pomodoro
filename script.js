@@ -1,0 +1,1 @@
+let boutonPrincipal = document.getElementById("boutonPrincipal");

@@ -1,9 +1,14 @@
-let boutonPrincipal = document.getElementById("boutonPrincipal");
-boutonPrincipal.textContent = "Débuter le timer";
+let boutonLancerTimer = document.getElementById("boutonPrincipal");
+boutonLancerTimer.textContent = "Débuter le timer";
+boutonLancerTimer.addEventListener('click', tempsEcoule);
 
 var minute = 25;
 var seconde = 0;
 document.getElementById("timer").innerHTML = minute+":"+seconde;
+
+let intervalID;
+let timeoutID;
+
 
 
 /**
@@ -11,7 +16,7 @@ document.getElementById("timer").innerHTML = minute+":"+seconde;
  * il serait peut-être judicieux de récupérer les minutes et secondes écoulées depuis la date 
  */
 function timerTravail(){
-    setInterval(function(){
+    intervalID = setInterval(function(){
         if(seconde==0){
             seconde=59;
             minute=minute-1;
@@ -25,7 +30,7 @@ function timerTravail(){
 function timerRepos(){
     seconde=0;
     minute=5;
-    setInterval(function(){
+    intervalID = setInterval(function(){
         if(seconde==0){
             seconde=59;
             minute=minute-1;
@@ -36,9 +41,26 @@ function timerRepos(){
     }, 1000)
 }
 
-boutonPrincipal.addEventListener('click', tempsEcoule);
+
 
 function tempsEcoule(){
+    let boutonResetTimer = document.getElementById("boutonPrincipal");
+    boutonResetTimer.textContent = "Reset le timer";
+    boutonLancerTimer.removeEventListener('click', tempsEcoule);
+    boutonResetTimer.addEventListener('click', stopTempsEcoule);
     timerTravail();
-    let tempsRestant = setTimeout(timerRepos,minute*60*60*1000) //Mettre une alerte en plus ?
+    
+    timeoutID= setTimeout(timerRepos,minute*60*60*1000) 
+    //Mettre une alerte en plus ? Une boucle automatique ?
+}
+
+function stopTempsEcoule(){
+    clearTimeout(timeoutID);
+    clearInterval(intervalID);
+    minute=25;
+    seconde=0;
+    document.getElementById("timer").innerHTML = minute+":"+seconde;
+    boutonLancerTimer.textContent = "Débuter le timer";
+    boutonResetTimer.removeEventListener('click', stopTempsEcoule);
+    boutonLancerTimer.addEventListener('click', tempsEcoule);
 }

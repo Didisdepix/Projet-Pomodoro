@@ -1,4 +1,5 @@
 let boutonLancerTimer = document.getElementById("boutonPrincipal");
+let boutonResetTimer = document.getElementById("boutonPrincipal");
 boutonLancerTimer.textContent = "Débuter le timer";
 boutonLancerTimer.addEventListener('click', tempsEcoule);
 
@@ -16,6 +17,10 @@ let timeoutID;
  * il serait peut-être judicieux de récupérer les minutes et secondes écoulées depuis la date 
  */
 function timerTravail(){
+    
+    seconde=0;
+    minute=25;
+    timeoutID= setTimeout(timerRepos,minute*60*60*1000)
     intervalID = setInterval(function(){
         if(seconde==0){
             seconde=59;
@@ -30,6 +35,7 @@ function timerTravail(){
 function timerRepos(){
     seconde=0;
     minute=5;
+    timeoutID= setTimeout(timerTravail,minute*60*60*1000)
     intervalID = setInterval(function(){
         if(seconde==0){
             seconde=59;
@@ -44,13 +50,14 @@ function timerRepos(){
 
 
 function tempsEcoule(){
-    let boutonResetTimer = document.getElementById("boutonPrincipal");
+    
     boutonResetTimer.textContent = "Reset le timer";
     boutonLancerTimer.removeEventListener('click', tempsEcoule);
     boutonResetTimer.addEventListener('click', stopTempsEcoule);
+
     timerTravail();
     
-    timeoutID= setTimeout(timerRepos,minute*60*60*1000) 
+     
     //Mettre une alerte en plus ? Une boucle automatique ?
 }
 

@@ -11,10 +11,26 @@
     </head>
 
     <!-- Le body intègre:
-             un seul bouton 
-             une zone pour afficher le temps restant en str -->
+             un bouton pour démarrer/réinitialiser le timer 
+             une zone pour afficher le temps restant en str 
+             des inputs pour ajuster le temps de repos ou de travail-->
     <body>
+        <h1 id="indicationPeriode"></h1>
         <p id="timer"></p>
         <button id="boutonPrincipal"></button>
+        <br />
+        <form method="get" >
+            <input id="minutesUtilisateurTravail" min="0" type="number" value="25" name="minutesUtilisateurTravail">
+            <input id = "secondesUtilisateurTravail" min="0" max="59" type="number" value="0" name="secondesUtilisateurTravail">
+    
+        <br />
+        
+            <input id="minutesUtilisateurRepos" min="0" type="number" value="5" name="minutesUtilisateurRepos">
+            <input id = "secondesUtilisateurRepos" min="0" max="59" type="number" value="0" name="secondesUtilisateurRepos">
+
+        <br />
+            <button type="submit" id="validationParametresUtilisateurRepos">Entrer ces paramètres</button>
+        </form>
+        
     </body>
 </html>

@@ -1,6 +1,7 @@
-//Les deux variables sont liées au même bouton mais sont utilisées pour faire la différence entre deux comportements
+//Les deux variables sont liées au même bouton mais sont utilisées pour faire la différence entre deux comportements, la troisième est le titre
 let boutonLancerTimer = document.getElementById("boutonPrincipal");
 let boutonResetTimer = document.getElementById("boutonPrincipal");
+let titreIndication;
 
 boutonLancerTimer.textContent = "Débuter le timer";
 
@@ -9,6 +10,8 @@ boutonLancerTimer.addEventListener('click', tempsEcoule);
 
 var minute = 25;
 var seconde = 0;
+
+
 
 document.getElementById("timer").innerHTML = minute+":"+seconde;
 
@@ -20,10 +23,15 @@ let timeoutID;
 * @see timerRepos 
 */
 function timerTravail(){
-    
+
+    clearTimeout(timeoutID);
+    clearInterval(intervalID);
+    titreIndication = document.getElementById("indicationPeriode");
+    titreIndication.innerHTML = "Il est temps de travailler";
     seconde=0;
     minute=25;
-    timeoutID= setTimeout(timerRepos,25*60*1000)
+
+    timeoutID= setTimeout(timerRepos,minute*60*1000+seconde*1000)
     intervalID = setInterval(function(){
         if(seconde==0){
             seconde=59;
@@ -40,9 +48,15 @@ function timerTravail(){
 * @see timerTravail 
 */
 function timerRepos(){
+
+    clearTimeout(timeoutID);
+    clearInterval(intervalID);
+    titreIndication = document.getElementById("indicationPeriode");
+    titreIndication.innerHTML = "Il est temps de se reposer";
     seconde=0;
     minute=5;
-    timeoutID= setTimeout(timerTravail,5*60*1000)
+
+    timeoutID= setTimeout(timerTravail,minute*60*1000+seconde*1000);
     intervalID = setInterval(function(){
         if(seconde==0){
             seconde=59;
@@ -70,7 +84,7 @@ function tempsEcoule(){
 }
 
 /*
-* Appelle les fonctions clear pour stopper le timer
+* Appelle les fonctions clear pour stopper le timer et change la fonctionnalité du bouton
 */
 
 function stopTempsEcoule(){
@@ -85,3 +99,4 @@ function stopTempsEcoule(){
     boutonResetTimer.removeEventListener('click', stopTempsEcoule);
     boutonLancerTimer.addEventListener('click', tempsEcoule);
 }
+

@@ -1,12 +1,12 @@
 //Les deux variables sont liées au même bouton mais sont utilisées pour faire la différence entre deux comportements, la troisième est le titre
 let boutonLancerTimer = document.getElementById("boutonPrincipal");
 let boutonResetTimer = document.getElementById("boutonPrincipal");
-let titreIndication;
+
 
 //Cette variable contient les paramètres rentrés par l'utilisateur 
 const params = new URLSearchParams(window.location.search);
 
-boutonLancerTimer.textContent = "Débuter le timer";
+//boutonLancerTimer.textContent = "Débuter le timer";
 
 //La fonction tempsEcoule permet de lancer à la fois les fonctions d'écoulement du temps et la transformation du bouton
 boutonLancerTimer.addEventListener('click', tempsEcoule);
@@ -37,8 +37,7 @@ function timerTravail(){
 
     clearTimeout(timeoutID);
     clearInterval(intervalID);
-    titreIndication = document.getElementById("indicationPeriode");
-    titreIndication.innerHTML = "Il est temps de travailler";
+    
 
     if(params.has("minutesUtilisateurTravail")){
         minute=params.get("minutesUtilisateurTravail");
@@ -67,8 +66,7 @@ function timerRepos(){
 
     clearTimeout(timeoutID);
     clearInterval(intervalID);
-    titreIndication = document.getElementById("indicationPeriode");
-    titreIndication.innerHTML = "Il est temps de se reposer";
+    
 
     if(params.has("minutesUtilisateurRepos")){
         minute=params.get("minutesUtilisateurRepos");
@@ -103,7 +101,6 @@ function tempsEcoule(){
 
     timerTravail();
     
-     
 }
 
 /*

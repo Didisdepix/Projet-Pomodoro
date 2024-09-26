@@ -6,30 +6,42 @@
         <meta name="viewport" content ="width=device-width, initial-scale=1"/>
         <title>Pomodoro d'Antoine</title>
         <link rel="stylesheet" href="main.css">  
-        <link href="https://fonts.googleapis.com/css2?family=Jacquarda+Bastarda+9&display=swap" rel="stylesheet"> 
+        
+        <!-- GOOGLE FONTS-->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Dots:wght@400" rel="stylesheet">
         <script src = "script.js" defer></script>                       
     </head>
 
-    <!-- Le body intègre:
-             un bouton pour démarrer/réinitialiser le timer 
-             une zone pour afficher le temps restant en str 
-             des inputs pour ajuster le temps de repos ou de travail-->
+    <!-- Le body intègre: un bouton pour démarrer/réinitialiser le timer (qui est dans un cercle) une zone pour afficher le temps restant en str des inputs pour ajuster le temps de repos ou de travail-->
     <body>
-        <h1 id="indicationPeriode"></h1>
-        <p id="timer"></p>
-        <button id="boutonPrincipal">Bienvenue sur le site Pommodoro</button>
+        <h1 id="titre"> POMODORO TIMER </h1>
+
+        <div class="contientCercle">
+            <div class="circle">
+                <p id="timer"></p>
+            </div>
+        </div>
+        <div class="contientCercle">
+            <button id="boutonPrincipal"></button>
+        </div>
+        
         <br />
         <form method="get" >
-            <input id="minutesUtilisateurTravail" min="0" type="number" value="25" name="minutesUtilisateurTravail">
-            <input id = "secondesUtilisateurTravail" min="0" max="59" type="number" value="0" name="secondesUtilisateurTravail">
+            
+            <p>Minutes de travail:<input id="minutesUtilisateurTravail" min="0" max="120" type="number" value="25" name="minutesUtilisateurTravail">
+            Secondes de travail en plus:<input id = "secondesUtilisateurTravail" min="0" max="59" type="number" value="0" name="secondesUtilisateurTravail"></p>
     
         <br />
         
-            <input id="minutesUtilisateurRepos" min="0" type="number" value="5" name="minutesUtilisateurRepos">
-            <input id = "secondesUtilisateurRepos" min="0" max="59" type="number" value="0" name="secondesUtilisateurRepos">
+            <p>Minutes de repos:<input id="minutesUtilisateurRepos" min="0" max="120" type="number" value="5" name="minutesUtilisateurRepos">
+            Secondes de repos en plus:<input id = "secondesUtilisateurRepos" min="0" max="59" type="number" value="0" name="secondesUtilisateurRepos"></p>
 
         <br />
+        <div class="contientCercle">
             <button type="submit" id="validationParametresUtilisateurRepos">Entrer ces paramètres</button>
+        </div>
         </form>
         
     </body>

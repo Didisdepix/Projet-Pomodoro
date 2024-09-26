@@ -3,14 +3,23 @@ let boutonLancerTimer = document.getElementById("boutonPrincipal");
 let boutonResetTimer = document.getElementById("boutonPrincipal");
 let titreIndication;
 
+//Cette variable contient les paramètres rentrés par l'utilisateur 
+const params = new URLSearchParams(window.location.search);
+
 boutonLancerTimer.textContent = "Débuter le timer";
 
 //La fonction tempsEcoule permet de lancer à la fois les fonctions d'écoulement du temps et la transformation du bouton
 boutonLancerTimer.addEventListener('click', tempsEcoule);
 
-var minute = 25;
-var seconde = 0;
-
+var minute;
+var seconde;
+if(params.has("minutesUtilisateurTravail")){
+    minute=params.get("minutesUtilisateurTravail");
+    seconde= params.get("secondesUtilisateurTravail")
+}else{
+    seconde=0;
+    minute=25;
+}
 
 
 document.getElementById("timer").innerHTML = minute+":"+seconde;
@@ -19,7 +28,7 @@ let intervalID;
 let timeoutID;
 
 /*
-* Gère le timer de 25 minutes puis appele timerRepos
+* Gère le timer de "minutesUtilisateurTravail" minutes puis appele timerRepos
 * @see timerRepos 
 */
 function timerTravail(){
@@ -28,9 +37,14 @@ function timerTravail(){
     clearInterval(intervalID);
     titreIndication = document.getElementById("indicationPeriode");
     titreIndication.innerHTML = "Il est temps de travailler";
-    seconde=0;
-    minute=25;
 
+    if(params.has("minutesUtilisateurTravail")){
+        minute=params.get("minutesUtilisateurTravail");
+        seconde= params.get("secondesUtilisateurTravail")
+    }else{
+        seconde=0;
+        minute=25;
+    }
     timeoutID= setTimeout(timerRepos,minute*60*1000+seconde*1000)
     intervalID = setInterval(function(){
         if(seconde==0){
@@ -44,7 +58,7 @@ function timerTravail(){
 }
 
 /*
-* Gère le timer de 5 minutes puis appelle timerTravail
+* Gère le timer de "minutesUtilisateurRepos" minutes puis appelle timerTravail
 * @see timerTravail 
 */
 function timerRepos(){
@@ -53,8 +67,15 @@ function timerRepos(){
     clearInterval(intervalID);
     titreIndication = document.getElementById("indicationPeriode");
     titreIndication.innerHTML = "Il est temps de se reposer";
-    seconde=0;
-    minute=5;
+
+    if(params.has("minutesUtilisateurRepos")){
+        minute=params.get("minutesUtilisateurRepos");
+        seconde= params.get("secondesUtilisateurRepos")
+    }else{
+        seconde=0;
+        minute=5;
+    }
+    
 
     timeoutID= setTimeout(timerTravail,minute*60*1000+seconde*1000);
     intervalID = setInterval(function(){

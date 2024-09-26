@@ -22,6 +22,19 @@ body{
     align-items: center;
 }
 
+.panel{
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  border-color: black;
+  border-width: 10px;
+  
+}
+
+p{
+  margin: 10px;
+}
+
 button{
     justify-content: center;
     display: flex;

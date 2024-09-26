@@ -17,7 +17,10 @@
     <!-- Le body intègre: un bouton pour démarrer/réinitialiser le timer (qui est dans un cercle) une zone pour afficher le temps restant en str des inputs pour ajuster le temps de repos ou de travail-->
     <body>
         <h1 id="titre"> POMODORO TIMER </h1>
-
+        <section class = "panel">
+            <p id="indicationTravail">Travail</p>
+            <p id="indicationRepos">Repos</p>
+        </section>
         <div class="contientCercle">
             <div class="circle">
                 <p id="timer"></p>
@@ -28,6 +31,8 @@
         </div>
         
         <br />
+
+        <!-- Formulaire-->
         <form method="get" >
             
             <p>Minutes de travail:<input id="minutesUtilisateurTravail" min="0" max="120" type="number" value="25" name="minutesUtilisateurTravail">

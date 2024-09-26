@@ -1,7 +1,10 @@
-//Les deux variables sont liées au même bouton mais sont utilisées pour faire la différence entre deux comportements, la troisième est le titre
+//Les deux variables sont liées au même bouton mais sont utilisées pour faire la différence entre deux comportements
 let boutonLancerTimer = document.getElementById("boutonPrincipal");
 let boutonResetTimer = document.getElementById("boutonPrincipal");
 
+//Ces variables correspondent aux mots "Travail" et "Repos" présents sous le titre
+let indicationTravail = document.getElementById("indicationTravail");
+let indicationRepos = document.getElementById("indicationRepos");
 
 //Cette variable contient les paramètres rentrés par l'utilisateur 
 const params = new URLSearchParams(window.location.search);
@@ -16,7 +19,7 @@ var minute;
 var seconde;
 if(params.has("minutesUtilisateurTravail")){
     minute=params.get("minutesUtilisateurTravail");
-    seconde= params.get("secondesUtilisateurTravail")
+    seconde= params.get("secondesUtilisateurTravail");
 }else{
     seconde=0;
     minute=25;
@@ -38,10 +41,13 @@ function timerTravail(){
     clearTimeout(timeoutID);
     clearInterval(intervalID);
     
+    //On change la couleur du texte "Travail"
+    indicationRepos.style.color = "black";
+    indicationTravail.style.color="yellow";
 
     if(params.has("minutesUtilisateurTravail")){
         minute=params.get("minutesUtilisateurTravail");
-        seconde= params.get("secondesUtilisateurTravail")
+        seconde= params.get("secondesUtilisateurTravail");
     }else{
         seconde=0;
         minute=25;
@@ -67,6 +73,8 @@ function timerRepos(){
     clearTimeout(timeoutID);
     clearInterval(intervalID);
     
+    indicationRepos.style.color = "yellow";
+    indicationTravail.style.color="black";
 
     if(params.has("minutesUtilisateurRepos")){
         minute=params.get("minutesUtilisateurRepos");

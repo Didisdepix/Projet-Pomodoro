@@ -33,6 +33,7 @@ body{
 
 p{
   margin: 10px;
+  color: white;
 }
 
 button{
@@ -42,10 +43,11 @@ button{
     border-radius: 50%;
     height: 100px;
     width: 100px;
-    background-color: crimson;
+    background-color: transparent;
 }
 
-/*@media screen and (max-width: 1024px) {
+
+@media screen and (max-width: 1024px) {
     .panel {
       width: 50%;
     }
@@ -56,4 +58,4 @@ button{
     .panel {
       width: 90%;
     }
-  }*/
+  }

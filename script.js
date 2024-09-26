@@ -102,8 +102,7 @@ function timerRepos(){
 *Transforme le bouton et appelle timerTravail pour lancer la boucle
 */
 function tempsEcoule(){
-    
-    boutonResetTimer.textContent = "Reset le timer";
+    boutonResetTimer.className ="fa-solid fa-arrow-rotate-left";
     boutonLancerTimer.removeEventListener('click', tempsEcoule);
     boutonResetTimer.addEventListener('click', stopTempsEcoule);
 
@@ -128,7 +127,7 @@ function stopTempsEcoule(){
     }
     
     document.getElementById("timer").innerHTML = minute+":"+seconde;
-    boutonLancerTimer.textContent = "Débuter le timer";
+    boutonResetTimer.className ="fa-solid fa-play";
     boutonResetTimer.removeEventListener('click', stopTempsEcoule);
     boutonLancerTimer.addEventListener('click', tempsEcoule);
 }

@@ -11,6 +11,7 @@ boutonLancerTimer.textContent = "Débuter le timer";
 //La fonction tempsEcoule permet de lancer à la fois les fonctions d'écoulement du temps et la transformation du bouton
 boutonLancerTimer.addEventListener('click', tempsEcoule);
 
+//récupère les paramètres donnés par l'utilisateur si ce dernier les a changé
 var minute;
 var seconde;
 if(params.has("minutesUtilisateurTravail")){
@@ -21,9 +22,10 @@ if(params.has("minutesUtilisateurTravail")){
     minute=25;
 }
 
-
+//affichage du timer avec les bonnes valeurs
 document.getElementById("timer").innerHTML = minute+":"+seconde;
 
+//variables utilisées pour gérer les intervalles de temps
 let intervalID;
 let timeoutID;
 
@@ -112,8 +114,13 @@ function stopTempsEcoule(){
     clearTimeout(timeoutID);
     clearInterval(intervalID);
 
-    minute=25;
-    seconde=0;
+    if(params.has("minutesUtilisateurTravail")){
+        minute=params.get("minutesUtilisateurTravail");
+        seconde= params.get("secondesUtilisateurTravail")
+    }else{
+        seconde=0;
+        minute=25;
+    }
     
     document.getElementById("timer").innerHTML = minute+":"+seconde;
     boutonLancerTimer.textContent = "Débuter le timer";

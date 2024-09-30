@@ -42,7 +42,7 @@ function timerTravail(){
     clearInterval(intervalID);
     
     //On change la couleur du texte "Travail"
-    indicationRepos.style.color = "black";
+    indicationRepos.style.color = "white";
     indicationTravail.style.color="yellow";
 
     if(params.has("minutesUtilisateurTravail")){
@@ -74,7 +74,7 @@ function timerRepos(){
     clearInterval(intervalID);
     
     indicationRepos.style.color = "yellow";
-    indicationTravail.style.color="black";
+    indicationTravail.style.color="white";
 
     if(params.has("minutesUtilisateurRepos")){
         minute=params.get("minutesUtilisateurRepos");

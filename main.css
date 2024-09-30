@@ -1,7 +1,10 @@
+h1{
+  color: white;
+}
+
 body{
-    font-family: "Edu AU VIC WA NT Dots", cursive;
+    font-family: "Fredoka", cursive;
     text-align: center;
-    font-display: flex;
     padding: 20px;
     background-color: red;
 }
@@ -20,20 +23,27 @@ body{
     justify-content: center;
     display: flex;
     align-items: center;
+    position: relative;
 }
 
 .panel{
+  padding-bottom: 10px;
   justify-content: center;
   align-items: center;
   display: flex;
   border-color: black;
   border-width: 10px;
+  font-size: 100%;
   
 }
 
 p{
   margin: 10px;
   color: white;
+}
+
+.timer{
+  font-size: 500%;
 }
 
 button{
@@ -46,16 +56,26 @@ button{
     background-color: transparent;
 }
 
-
 @media screen and (max-width: 1024px) {
     .panel {
-      width: 50%;
+      font-size: 150%;
     }
+    .circle{
+      width: 300px;
+      height: 300px;
+    }
+
   }
   
   @media screen and (max-width: 768px) {
-    .container,
     .panel {
-      width: 90%;
+      font-size: 200%;
+    }
+    .circle{
+      width: 200px;
+      height: 200px;
+    }
+    h1{
+      size: 300%;
     }
   }

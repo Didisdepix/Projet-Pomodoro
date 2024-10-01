@@ -6,11 +6,6 @@ let boutonResetTimer = document.getElementById("boutonPrincipal");
 let indicationTravail = document.getElementById("indicationTravail");
 let indicationRepos = document.getElementById("indicationRepos");
 
-//Cette variable contient les paramètres rentrés par l'utilisateur 
-const params = new URLSearchParams(window.location.search);
-
-//boutonLancerTimer.textContent = "Débuter le timer";
-
 //La fonction tempsEcoule permet de lancer à la fois les fonctions d'écoulement du temps et la transformation du bouton
 boutonLancerTimer.addEventListener('click', tempsEcoule);
 
@@ -26,7 +21,7 @@ if(params.has("minutesUtilisateurTravail")){
 }
 
 //affichage du timer avec les bonnes valeurs
-document.getElementById("timer").innerHTML = minute+":"+seconde;
+document.getElementById("timer").innerHTML = minute+":0"+seconde;
 
 //variables utilisées pour gérer les intervalles de temps
 let intervalID;
@@ -45,13 +40,8 @@ function timerTravail(){
     indicationRepos.style.color = "white";
     indicationTravail.style.color="yellow";
 
-    if(params.has("minutesUtilisateurTravail")){
-        minute=params.get("minutesUtilisateurTravail");
-        seconde= params.get("secondesUtilisateurTravail");
-    }else{
-        seconde=0;
-        minute=25;
-    }
+    seconde=0;
+    minute=25;
     timeoutID= setTimeout(timerRepos,minute*60*1000+seconde*1000)
     intervalID = setInterval(function(){
         if(seconde==0){
@@ -60,7 +50,11 @@ function timerTravail(){
         }else{
             seconde=seconde-1;
         }
-        document.getElementById("timer").innerHTML = minute+":"+seconde;
+        if(seconde<10){
+            document.getElementById("timer").innerHTML = minute+":0"+seconde;
+        }else{
+            document.getElementById("timer").innerHTML = minute+":"+seconde;
+        }
     }, 1000)
 }
 
@@ -76,13 +70,8 @@ function timerRepos(){
     indicationRepos.style.color = "yellow";
     indicationTravail.style.color="white";
 
-    if(params.has("minutesUtilisateurRepos")){
-        minute=params.get("minutesUtilisateurRepos");
-        seconde= params.get("secondesUtilisateurRepos")
-    }else{
-        seconde=0;
-        minute=5;
-    }
+    seconde=0;
+    minute=5;
     
 
     timeoutID= setTimeout(timerTravail,minute*60*1000+seconde*1000);
@@ -93,7 +82,11 @@ function timerRepos(){
         }else{
             seconde=seconde-1;
         }
-        document.getElementById("timer").innerHTML = minute+":"+seconde;
+        if(seconde<10){
+            document.getElementById("timer").innerHTML = minute+":0"+seconde;
+        }else{
+            document.getElementById("timer").innerHTML = minute+":"+seconde;
+        }
     }, 1000)
 }
 

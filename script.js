@@ -7,7 +7,7 @@ let indicationTravail = document.getElementById("indicationTravail");
 let indicationRepos = document.getElementById("indicationRepos");
 
 //Cette variable contient les paramètres rentrés par l'utilisateur 
-localStorage
+const params = new URLSearchParams(window.location.search);
 
 //boutonLancerTimer.textContent = "Débuter le timer";
 
@@ -99,7 +99,7 @@ function timerRepos(){
         }else{
             seconde=seconde-1;
         }
-
+        
         //Affichage différent selon le nombre de secondes
         if(seconde<10){
             document.getElementById("timer").innerHTML = minute+":0"+seconde;

@@ -7,7 +7,7 @@ let indicationTravail = document.getElementById("indicationTravail");
 let indicationRepos = document.getElementById("indicationRepos");
 
 //Cette variable contient les paramètres rentrés par l'utilisateur 
-const params = new URLSearchParams(window.location.search);
+localStorage
 
 //boutonLancerTimer.textContent = "Débuter le timer";
 

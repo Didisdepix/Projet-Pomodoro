@@ -26,7 +26,7 @@ if(params.has("minutesUtilisateurTravail")){
 }
 
 //affichage du timer avec les bonnes valeurs
-document.getElementById("timer").innerHTML = minute+":"+seconde;
+document.getElementById("timer").innerHTML = minute+":0"+seconde;
 
 //variables utilisées pour gérer les intervalles de temps
 let intervalID;
@@ -60,7 +60,13 @@ function timerTravail(){
         }else{
             seconde=seconde-1;
         }
-        document.getElementById("timer").innerHTML = minute+":"+seconde;
+
+        //Affichage différent selon le nombre de secondes
+        if(seconde<10){
+            document.getElementById("timer").innerHTML = minute+":0"+seconde;
+        }else{
+            document.getElementById("timer").innerHTML = minute+":"+seconde;
+        }
     }, 1000)
 }
 
@@ -93,7 +99,13 @@ function timerRepos(){
         }else{
             seconde=seconde-1;
         }
-        document.getElementById("timer").innerHTML = minute+":"+seconde;
+
+        //Affichage différent selon le nombre de secondes
+        if(seconde<10){
+            document.getElementById("timer").innerHTML = minute+":0"+seconde;
+        }else{
+            document.getElementById("timer").innerHTML = minute+":"+seconde;
+        }
     }, 1000)
 }
 
@@ -126,7 +138,7 @@ function stopTempsEcoule(){
         minute=25;
     }
     
-    document.getElementById("timer").innerHTML = minute+":"+seconde;
+    document.getElementById("timer").innerHTML = minute+":0"+seconde;
     boutonResetTimer.className ="fa-solid fa-play";
     boutonResetTimer.removeEventListener('click', stopTempsEcoule);
     boutonLancerTimer.addEventListener('click', tempsEcoule);

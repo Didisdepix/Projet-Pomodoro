@@ -12,16 +12,13 @@ boutonLancerTimer.addEventListener('click', tempsEcoule);
 //récupère les paramètres donnés par l'utilisateur si ce dernier les a changé
 var minute;
 var seconde;
-if(params.has("minutesUtilisateurTravail")){
-    minute=params.get("minutesUtilisateurTravail");
-    seconde= params.get("secondesUtilisateurTravail");
-}else{
-    seconde=0;
-    minute=25;
-}
+
+seconde=0;
+minute=25;
+
 
 //affichage du timer avec les bonnes valeurs
-document.getElementById("timer").innerHTML = minute+":0"+seconde;
+document.getElementById("timer").innerHTML = minute+":"+seconde;
 
 //variables utilisées pour gérer les intervalles de temps
 let intervalID;
@@ -42,6 +39,7 @@ function timerTravail(){
 
     seconde=0;
     minute=25;
+
     timeoutID= setTimeout(timerRepos,minute*60*1000+seconde*1000)
     intervalID = setInterval(function(){
         if(seconde==0){
@@ -50,7 +48,7 @@ function timerTravail(){
         }else{
             seconde=seconde-1;
         }
-        if(seconde<10){
+        if(minute<10){
             document.getElementById("timer").innerHTML = minute+":0"+seconde;
         }else{
             document.getElementById("timer").innerHTML = minute+":"+seconde;
@@ -72,7 +70,6 @@ function timerRepos(){
 
     seconde=0;
     minute=5;
-    
 
     timeoutID= setTimeout(timerTravail,minute*60*1000+seconde*1000);
     intervalID = setInterval(function(){
@@ -82,7 +79,7 @@ function timerRepos(){
         }else{
             seconde=seconde-1;
         }
-        if(seconde<10){
+        if(minute<10){
             document.getElementById("timer").innerHTML = minute+":0"+seconde;
         }else{
             document.getElementById("timer").innerHTML = minute+":"+seconde;
@@ -111,15 +108,10 @@ function stopTempsEcoule(){
     clearTimeout(timeoutID);
     clearInterval(intervalID);
 
-    if(params.has("minutesUtilisateurTravail")){
-        minute=params.get("minutesUtilisateurTravail");
-        seconde= params.get("secondesUtilisateurTravail")
-    }else{
-        seconde=0;
-        minute=25;
-    }
-    
-    document.getElementById("timer").innerHTML = minute+":"+seconde;
+    seconde=0;
+    minute=25;
+
+    document.getElementById("timer").innerHTML = minute+":0"+seconde;
     boutonResetTimer.className ="fa-solid fa-play";
     boutonResetTimer.removeEventListener('click', stopTempsEcoule);
     boutonLancerTimer.addEventListener('click', tempsEcoule);

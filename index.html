@@ -5,6 +5,9 @@
         <meta charset="UTF-8"/>
         <meta name="viewport" content ="width=device-width, initial-scale=1"/>
         <title>Pomodoro d'Antoine</title>
+
+        <meta name="description" content="Application Web de timer pommodoro dans le cadre d'un projet de BUT informatique">
+
         <link rel="stylesheet" href="main.css">  
 
         <!-- FONTAWESOME -->
@@ -22,19 +25,18 @@
     <!-- Le body intègre: un bouton pour démarrer/réinitialiser le timer (qui est dans un cercle) une zone pour afficher le temps restant en str des inputs pour ajuster le temps de repos ou de travail-->
     <body>
         <h1 id="titre"> POMODORO TIMER </h1>
-        <section class = "panel">
+        <div class = "panel">
             <p id="indicationTravail">Travail</p>
             <p id="indicationRepos">Repos</p>
-        </section>
+        </div>
         <div class="contientCercle">
             <div class="circle">
                 <p id="timer" class = "timer"></p>
             </div>
         </div>
         <div class="contientCercle">
-            <button id="boutonPrincipal" class="fa-solid fa-play"></button>
+            <button id="boutonPrincipal" class="fa-solid fa-play" aria-label="Débuter/Reset le timer"></button>
         </div>
-        </form>
         
     </body>
 </html>

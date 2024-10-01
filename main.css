@@ -93,4 +93,10 @@ button:hover{
     h1{
       font-size: 300%;
     }
+    input{
+      padding: 3%;
+    }
+    label{
+      display: block;
+    }
   }
